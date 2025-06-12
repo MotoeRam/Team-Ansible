@@ -1,0 +1,37 @@
+# Install Nginx
+- name: Install Nginx Web Server
+  hosts: webservers
+  become: true
+  tasks:
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+      
+# Create a User
+- name: Create a DevOps User
+  hosts: all
+  become: true
+  tasks:
+    - name: Add devops user
+      user:
+        name: devops
+        state: present
+
+# Deploy an HTML File
+- name: Deploy Static Website
+  hosts: webservers
+  become: true
+  tasks:
+    - name: Copy HTML file
+      copy:
+        src: index.html
+        dest: /var/www/html/index.html
+
+# Reboot Servers
+- name: Reboot all servers
+  hosts: all
+  become: true
+  tasks:
+    - name: Reboot the system
+      reboot:
