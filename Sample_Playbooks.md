@@ -1,4 +1,6 @@
-# Install Nginx
+📄 Sample Playbooks
+Install Nginx
+
 - name: Install Nginx Web Server
   hosts: webservers
   become: true
@@ -7,8 +9,9 @@
       apt:
         name: nginx
         state: present
-      
-# Create a User
+
+Create a User
+
 - name: Create a DevOps User
   hosts: all
   become: true
@@ -18,7 +21,8 @@
         name: devops
         state: present
 
-# Deploy an HTML File
+Deploy an HTML File
+
 - name: Deploy Static Website
   hosts: webservers
   become: true
@@ -28,7 +32,8 @@
         src: index.html
         dest: /var/www/html/index.html
 
-# Reboot Servers
+Reboot Servers
+
 - name: Reboot all servers
   hosts: all
   become: true
